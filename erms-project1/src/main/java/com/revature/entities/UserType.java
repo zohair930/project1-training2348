@@ -1,12 +1,14 @@
 package com.revature.entities;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public enum UserType {
     EMPLOYEE,
     MANAGER;
 
     @Getter
+    @Setter
     private String code = "";
 
     UserType() {
