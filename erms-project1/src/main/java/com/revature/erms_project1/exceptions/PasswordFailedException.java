@@ -1,4 +1,4 @@
-package com.revature.exceptions;
+package com.revature.erms_project1.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

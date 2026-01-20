@@ -1,11 +1,9 @@
-package com.revature.controllers;
+package com.revature.erms_project1.controllers;
 
-import com.revature.dto.LoginDTO;
-import com.revature.entities.User;
-import com.revature.exceptions.AccountNotFoundException;
-import com.revature.exceptions.PasswordFailedException;
-import com.revature.exceptions.UserNotFoundException;
-import com.revature.services.UserService;
+import com.revature.erms_project1.dto.LoginDTO;
+import com.revature.erms_project1.entities.User;
+import com.revature.erms_project1.exceptions.PasswordFailedException;
+import com.revature.erms_project1.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

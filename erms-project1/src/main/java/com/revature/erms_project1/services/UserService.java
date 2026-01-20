@@ -1,10 +1,10 @@
-package com.revature.services;
+package com.revature.erms_project1.services;
 
-import com.revature.entities.User;
-import com.revature.exceptions.PasswordFailedException;
-import com.revature.exceptions.UserNotFoundException;
-import com.revature.exceptions.AccountNotFoundException;
-import com.revature.repositories.UserRepository;
+import com.revature.erms_project1.entities.User;
+import com.revature.erms_project1.exceptions.PasswordFailedException;
+import com.revature.erms_project1.exceptions.UserNotFoundException;
+import com.revature.erms_project1.exceptions.AccountNotFoundException;
+import com.revature.erms_project1.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

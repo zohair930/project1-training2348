@@ -1,4 +1,4 @@
-package com.revature.dto;
+package com.revature.erms_project1.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

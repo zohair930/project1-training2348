@@ -1,10 +1,8 @@
 package com.revature.erms_project1.exceptions;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class AccountNotFoundException extends Exception {
-
+@ResponseStatus(value= HttpStatus.BAD_REQUEST, reason = "Account not found")
+public class AccountNotFoundException extends Exception{
 }

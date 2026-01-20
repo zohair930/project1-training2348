@@ -1,4 +1,4 @@
-package com.revature.entities;
+package com.revature.erms_project1.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
