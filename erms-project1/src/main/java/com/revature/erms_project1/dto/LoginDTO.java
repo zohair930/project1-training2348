@@ -5,15 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
-
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TicketCreateDTO {
-
-    private String description;
-    private BigDecimal price;
+public class LoginDTO {
+    // Data Transfer Object, useful for when we need to send data in a request that isn't
+    // already an entity
+    private String username;
+    private String password;
 }
