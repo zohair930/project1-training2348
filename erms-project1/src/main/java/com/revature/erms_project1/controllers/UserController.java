@@ -32,19 +32,6 @@ public class UserController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
-    // According to REST rules, we pluralize collections of objects
-    // We also ids to specify specific records
-    // We typically don't include verbs in the path names because
-    // the HTTP verb is usually indicative of what the operation is doing
-    // localhost:8081/persons/1/pets/1
-//    @PutMapping("/persons/{personId}/pets/{petId}")
-//    public ResponseEntity<User> adopt(@PathVariable("personId") Long personId, @PathVariable("petId") Long petId) throws AccountNotFoundException, UserNotFoundException {
-//        User person = this.userService.adopt(personId, petId);
-//        return new ResponseEntity<>(person, HttpStatus.OK);
-//    }
-//
-//    // This method takes a personId from the path and then returns all pets that were
-//    // adopted by that person
     @GetMapping("/users/{userId}")
     public ResponseEntity<User> getUser(@PathVariable("userId") Long personId) {
         try{
