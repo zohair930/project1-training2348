@@ -11,7 +11,7 @@ import lombok.NonNull;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,7 @@ public class User {
     @Enumerated(EnumType.STRING)@NonNull
     private UserType userType;
 
-    @OneToOne(targetEntity=Account.class, cascade=CascadeType.ALL)
-    @JoinColumn(name="user_account_id", referencedColumnName = "acc_id")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Account userAccount;
 
     @Override

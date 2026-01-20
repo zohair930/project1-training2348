@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "account")
+@Table(name = "accounts")
 public class Account {
 
     @Id
@@ -24,12 +24,14 @@ public class Account {
 
     private BigDecimal balance;
 
-    @OneToOne(mappedBy = "account")
+    @OneToOne(fetch=FetchType.LAZY, optional=false)
+    // here, we reference the unique column that we defined above
+    // also specify that the values for this column are unique (otherwise, we could have multiple matching records and it wouldn't be 1-to-1)
+    @JoinColumn(name = "account_user_id", nullable=false, unique=true)
     private User user;
 
     //an account can have many tickets
     @OneToMany(targetEntity=Ticket.class, cascade=CascadeType.ALL)
-    @JoinColumn(name="ticket_fk")
     private List<Ticket> tickets = new ArrayList<>();
 
     @Override
