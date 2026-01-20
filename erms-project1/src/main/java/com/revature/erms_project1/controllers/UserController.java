@@ -3,6 +3,7 @@ package com.revature.erms_project1.controllers;
 import com.revature.erms_project1.dto.LoginDTO;
 import com.revature.erms_project1.entities.User;
 import com.revature.erms_project1.exceptions.PasswordFailedException;
+import com.revature.erms_project1.exceptions.UserNotFoundException;
 import com.revature.erms_project1.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,9 +45,15 @@ public class UserController {
 //
 //    // This method takes a personId from the path and then returns all pets that were
 //    // adopted by that person
-//    @GetMapping("/persons/{personId}")
-//    public ResponseEntity<List<Pet>> getAdopted(@PathVariable("personId") Long personId) {
-//        List<Pet> pets = this.userService.getAdoptedPets(personId);
-//        return new ResponseEntity<>(pets, HttpStatus.OK);
-//    }
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<User> getUser(@PathVariable("userId") Long personId) {
+        try{
+            User user = this.userService.getUserById(personId);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        catch (UserNotFoundException e){
+
+        }
+        return null;
+    }
 }

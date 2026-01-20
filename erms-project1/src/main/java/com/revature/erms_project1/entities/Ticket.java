@@ -1,6 +1,7 @@
 package com.revature.erms_project1.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "ticket")
+@Table(name = "tickets")
 public class Ticket {
 
 
@@ -20,7 +21,6 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
     private Long id;
-
     private String description;
 
     private BigDecimal price;
@@ -29,7 +29,19 @@ public class Ticket {
     private TicketStatus status;
 
     // many tickets can belong to one account
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "acc_id")
+    @ManyToOne
+    @JoinColumn(name = "account_fk")
+    @JsonBackReference
     private Account account;
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", status=" + status +
+                ", account=" + account +
+                '}';
+    }
 }
