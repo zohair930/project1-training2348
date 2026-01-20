@@ -9,14 +9,11 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
 @Table(name = "tickets")
 public class Ticket {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
@@ -33,6 +30,15 @@ public class Ticket {
     @JoinColumn(name = "account_fk")
     @JsonBackReference
     private Account account;
+
+    public Ticket() {
+        this.status = TicketStatus.PENDING;
+    }
+
+    public Ticket(String description, BigDecimal price) {
+        this.description = description;
+        this.price = price;
+    }
 
     @Override
     public String toString() {

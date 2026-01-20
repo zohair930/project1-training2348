@@ -1,10 +1,8 @@
 package com.revature.erms_project1.services;
 
-import com.revature.erms_project1.entities.Account;
 import com.revature.erms_project1.entities.User;
 import com.revature.erms_project1.exceptions.PasswordFailedException;
 import com.revature.erms_project1.exceptions.UserNotFoundException;
-import com.revature.erms_project1.exceptions.AccountNotFoundException;
 import com.revature.erms_project1.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,12 +15,10 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-//
-//    @Autowired
-//    private PetRepository petRepository;
 
     public User register(User person) {
         person = userRepository.save(person);
+        System.out.println("Called register");
         return person;
     }
 
@@ -36,33 +32,4 @@ public class UserService {
         return userRepository.findById(accountId)
                 .orElseThrow(UserNotFoundException::new);
     }
-//
-//    public User adopt(Long personId, Long petId) throws PetNotFoundException, UserNotFoundException {
-//        Optional<Pet> petOptional = petRepository.findById(petId);
-//        if(!petOptional.isPresent()) throw new PetNotFoundException();
-//
-//        Optional<User> personOptional = userRepository.findById(personId);
-//        if(!personOptional.isPresent()) throw new UserNotFoundException();
-//
-//        // If we update the person entity and persist those changes back to the db,
-//        // we'll see that the pet table will be updated to reflect this adoption
-//        User person = personOptional.get();
-//        Pet pet = petOptional.get();
-//
-//        // add the pet to the person's adoptedPets list
-//        person.getAdoptedPets().add(pet);
-//        System.out.println(person);
-//
-//        // persist these changes and return the person
-//        person = userRepository.save(person);
-//        return person;
-//    }
-//
-//    public List<Pet> getAdoptedPets(Long personId) {
-//        return this.petRepository.getAdoptedPets(personId);
-//    }
-
-
-
-
 }

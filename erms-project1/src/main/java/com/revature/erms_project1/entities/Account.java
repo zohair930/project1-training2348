@@ -34,6 +34,11 @@ public class Account {
     @OneToMany(targetEntity=Ticket.class, cascade=CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<>();
 
+    public Account(String status, BigDecimal balance) {
+        this.status = status;
+        this.balance = balance;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
