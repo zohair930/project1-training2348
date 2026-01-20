@@ -1,6 +1,7 @@
 package com.revature.erms_project1.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +30,8 @@ public class Ticket {
     private TicketStatus status;
 
     // many tickets can belong to one account
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "acc_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_fk")
+    @JsonBackReference
     private Account account;
 }

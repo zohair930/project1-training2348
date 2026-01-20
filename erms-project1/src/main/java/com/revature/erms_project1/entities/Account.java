@@ -24,11 +24,21 @@ public class Account {
 
     private BigDecimal balance;
 
-    @OneToOne(mappedBy = "accountOwner")
+    @OneToOne(mappedBy = "account")
     private User user;
 
     //an account can have many tickets
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToMany(targetEntity=Ticket.class, cascade=CascadeType.ALL)
+    @JoinColumn(name="ticket_fk")
     private List<Ticket> tickets = new ArrayList<>();
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "id=" + id +
+                ", status=" + status +
+                ", balance=" + balance +
+                ", tickets=" + tickets.toString() +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.revature.erms_project1.services;
 
+import com.revature.erms_project1.entities.Account;
 import com.revature.erms_project1.entities.User;
 import com.revature.erms_project1.exceptions.PasswordFailedException;
 import com.revature.erms_project1.exceptions.UserNotFoundException;
@@ -29,6 +30,11 @@ public class UserService {
         User personDB = this.userRepository.findByUsername(username);
         if(personDB.getPassword().equals(password)) return personDB;
         else throw new PasswordFailedException();
+    }
+
+    public User getUserById(Long accountId) throws UserNotFoundException {
+        return userRepository.findById(accountId)
+                .orElseThrow(UserNotFoundException::new);
     }
 //
 //    public User adopt(Long personId, Long petId) throws PetNotFoundException, UserNotFoundException {
