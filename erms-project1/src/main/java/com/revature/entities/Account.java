@@ -1,11 +1,12 @@
-package com.revature.erms_project1.entities;
-
+package com.revature.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @NoArgsConstructor
@@ -24,11 +25,11 @@ public class Account {
 
     private BigDecimal balance;
 
-    @JoinColumn(name = "ticket_owner")
-    private Ticket ticketOwner;
-
     @OneToOne(mappedBy = "accountOwner")
     private User user;
 
+    //an account can have many tickets
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private List<Ticket> tickets = new ArrayList<>();
 
 }

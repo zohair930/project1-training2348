@@ -1,4 +1,4 @@
-package com.revature.erms_project1.entities;
+package com.revature.entities;
 
 
 import jakarta.persistence.*;
@@ -28,6 +28,8 @@ public class Ticket {
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
 
-    @OneToOne(mappedBy = "ticketOwner")
+    // many tickets can belong to one account
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "acc_id")
     private Account account;
 }

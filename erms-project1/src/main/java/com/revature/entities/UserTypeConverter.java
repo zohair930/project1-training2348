@@ -1,4 +1,4 @@
-package com.revature.erms_project1.entities;
+package com.revature.entities;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

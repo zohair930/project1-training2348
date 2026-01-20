@@ -1,6 +1,6 @@
-package com.revature.erms_project1.repositories;
+package com.revature.repositories;
 
-import com.revature.erms_project1.entities.Account;
+import com.revature.entities.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

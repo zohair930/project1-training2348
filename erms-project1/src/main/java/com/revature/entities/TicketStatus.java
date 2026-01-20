@@ -1,4 +1,4 @@
-package com.revature.erms_project1.entities;
+package com.revature.entities;
 
 public enum TicketStatus {
     PENDING,

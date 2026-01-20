@@ -4,7 +4,7 @@ import com.revature.entities.User;
 import com.revature.exceptions.PasswordFailedException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.exceptions.AccountNotFoundException;
-import com.revature.repository.UserRepository;
+import com.revature.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public User login(String username, String password) throws PasswordFailedException{
-        User personDB = this.userRepository.findByName(username);
+        User personDB = this.userRepository.findByUsername(username);
         if(personDB.getPassword().equals(password)) return personDB;
         else throw new PasswordFailedException();
     }
