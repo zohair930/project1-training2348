@@ -28,8 +28,13 @@ public class UserService {
         else throw new PasswordFailedException();
     }
 
-    public User getUserById(Long accountId) throws UserNotFoundException {
-        return userRepository.findById(accountId)
+//    public User getUserById(Long accountId) throws UserNotFoundException {
+//        return userRepository.findById(accountId)
+//                .orElseThrow(UserNotFoundException::new);
+//    }
+
+    public User getUserById(Integer userId) throws UserNotFoundException {
+        return userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
     }
 }

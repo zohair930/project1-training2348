@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 // Whenever this exception is thrown, the corresponding request
 // should send back a 404 (NOT FOUND status code)
-@ResponseStatus(value=HttpStatus.NOT_FOUND, reason="The corresponding Pet was not found")
+@ResponseStatus(value=HttpStatus.NOT_FOUND, reason="Ticket not found")
 public class TicketNotFoundException extends Exception{
 }

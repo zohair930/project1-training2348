@@ -1,5 +1,7 @@
 package com.revature.erms_project1.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,10 +21,16 @@ public class User {
 
     @Column(unique=true, nullable=false)
     private String username;
-    private String password;
+
     @Enumerated(EnumType.STRING)@NonNull
     private UserType userType;
 
+    //
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
+    //
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Account userAccount;
 
@@ -36,14 +44,24 @@ public class User {
         this.userType = userType;
     }
 
+   // @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + userId +
+//                ", username=" + username +
+//                ", password=" + password +
+//                ", userType=" + userType +
+//                ", account=" + userAccount.toString() +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + userId +
                 ", username=" + username +
-                ", password=" + password +
                 ", userType=" + userType +
-                ", account=" + userAccount.toString() +
                 '}';
     }
+
 }
