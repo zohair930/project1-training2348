@@ -28,4 +28,10 @@ public class AccountController {
         return new ResponseEntity<>(account, HttpStatus.CREATED);
     }
 
+    @PostMapping("/accounts")
+    public ResponseEntity<Account> createAccount(@RequestParam int userId) throws UserNotFoundException {
+        Account account = accountService.createAccountForUser(userId);
+        return new ResponseEntity<>(account, HttpStatus.CREATED);
+    }
+
 }
