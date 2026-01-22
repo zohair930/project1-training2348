@@ -18,10 +18,16 @@ public class User {
 
     @Column(unique=true, nullable=false)
     private String username;
-    private String password;
+
     @Enumerated(EnumType.STRING)@NonNull
     private UserType userType;
 
+    //
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
+    //
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private Account userAccount;
@@ -36,14 +42,24 @@ public class User {
         this.userType = userType;
     }
 
+   // @Override
+//    public String toString() {
+//        return "User{" +
+//                "id=" + userId +
+//                ", username=" + username +
+//                ", password=" + password +
+//                ", userType=" + userType +
+//                ", account=" + userAccount.toString() +
+//                '}';
+//    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + userId +
                 ", username=" + username +
-                ", password=" + password +
                 ", userType=" + userType +
-                ", account=" + userAccount.toString() +
                 '}';
     }
+
 }
