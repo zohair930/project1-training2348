@@ -21,8 +21,6 @@ public class Account {
     @Column(name = "acc_id")
     private Long id;
 
-    private String status;
-
     private BigDecimal balance;
 
     @OneToOne(fetch=FetchType.EAGER, optional=false)
@@ -39,9 +37,7 @@ public class Account {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<>();
 
-
-    public Account(String status, BigDecimal balance) {
-        this.status = status;
+    public Account(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -59,7 +55,6 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", status=" + status +
                 ", balance=" + balance +
                 ", ticketCount=" + (tickets == null ? 0 : tickets.size()) +
                 '}';

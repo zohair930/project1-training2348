@@ -25,8 +25,7 @@ public class AccountService {
                 .orElseThrow(AccountNotFoundException::new);
     }
 
-
-    public Account createAccountForUser(int userId) throws UserNotFoundException {
+    public Account createAccountForUser(Long userId) throws UserNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
 
@@ -36,7 +35,6 @@ public class AccountService {
         }
 
         Account account = new Account();
-        account.setStatus("ACTIVE");
         account.setBalance(BigDecimal.ZERO);
 
 
