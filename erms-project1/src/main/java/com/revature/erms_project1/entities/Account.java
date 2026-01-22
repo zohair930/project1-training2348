@@ -20,8 +20,6 @@ public class Account {
     @Column(name = "acc_id")
     private Long id;
 
-    private String status;
-
     private BigDecimal balance;
 
     @OneToOne(fetch=FetchType.LAZY, optional=false)
@@ -34,8 +32,7 @@ public class Account {
     @OneToMany(targetEntity=Ticket.class, cascade=CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Account(String status, BigDecimal balance) {
-        this.status = status;
+    public Account(BigDecimal balance) {
         this.balance = balance;
     }
 
@@ -43,7 +40,6 @@ public class Account {
     public String toString() {
         return "Account{" +
                 "id=" + id +
-                ", status=" + status +
                 ", balance=" + balance +
                 ", tickets=" + tickets.toString() +
                 '}';

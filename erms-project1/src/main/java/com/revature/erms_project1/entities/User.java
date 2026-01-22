@@ -1,10 +1,8 @@
 package com.revature.erms_project1.entities;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @AllArgsConstructor

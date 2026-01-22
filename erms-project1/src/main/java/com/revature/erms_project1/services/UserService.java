@@ -32,4 +32,8 @@ public class UserService {
         return userRepository.findById(accountId)
                 .orElseThrow(UserNotFoundException::new);
     }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }
