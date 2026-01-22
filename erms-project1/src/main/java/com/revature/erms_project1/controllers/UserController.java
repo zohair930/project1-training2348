@@ -4,6 +4,7 @@ import com.revature.erms_project1.dto.LoginDTO;
 import com.revature.erms_project1.entities.User;
 import com.revature.erms_project1.exceptions.PasswordFailedException;
 import com.revature.erms_project1.exceptions.UserNotFoundException;
+import com.revature.erms_project1.services.AccountService;
 import com.revature.erms_project1.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AccountService accountService;
+
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
+    public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException {
         user = this.userService.register(user);
+        accountService.createAccountForUser((long) user.getUserId());
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
@@ -43,11 +48,5 @@ public class UserController {
 
         }
         return null;
-    }
-
-    @GetMapping("/users/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
-        User user = this.userService.getUserByUsername(username);
-        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
