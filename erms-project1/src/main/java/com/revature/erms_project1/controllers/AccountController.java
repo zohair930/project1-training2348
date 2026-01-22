@@ -22,16 +22,4 @@ public class AccountController {
         Account account = accountService.getAccountById(accountId);
         return new ResponseEntity<>(account, HttpStatus.OK);
     }
-    @PostMapping("/accounts")
-    public ResponseEntity<Account> createAccount(@RequestParam Long userId) throws UserNotFoundException {
-        Account account = accountService.createAccountForUser(userId);
-        return new ResponseEntity<>(account, HttpStatus.CREATED);
-    }
-
-    @PostMapping("/accounts")
-    public ResponseEntity<Account> createAccount(@RequestParam int userId) throws UserNotFoundException {
-        Account account = accountService.createAccountForUser(userId);
-        return new ResponseEntity<>(account, HttpStatus.CREATED);
-    }
-
 }

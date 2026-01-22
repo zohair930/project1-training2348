@@ -36,6 +36,7 @@ public class Ticket {
     public Ticket(String description, BigDecimal price) {
         this.description = description;
         this.price = price;
+        this.status = TicketStatus.PENDING;
     }
 
     @Override
