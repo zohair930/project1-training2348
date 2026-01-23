@@ -2,7 +2,6 @@ package com.revature.erms_project1.controllers;
 
 import com.revature.erms_project1.dto.TicketCreateDTO;
 import com.revature.erms_project1.entities.Ticket;
-import com.revature.erms_project1.entities.TicketStatus;
 import com.revature.erms_project1.exceptions.AccountNotFoundException;
 import com.revature.erms_project1.exceptions.TicketNotFoundException;
 import com.revature.erms_project1.services.TicketService;
@@ -25,9 +24,7 @@ public class TicketController {
     @PostMapping("/accounts/{accountId}/tickets")
     public ResponseEntity<Ticket> submitTicket(@PathVariable Long accountId,
                                                @RequestBody TicketCreateDTO dto) throws AccountNotFoundException {
-
         Ticket created = ticketService.submitTicket(accountId, dto);
-        System.out.println("Created" + created);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
