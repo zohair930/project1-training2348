@@ -55,12 +55,17 @@ public class TicketController {
     public ResponseEntity<List<Ticket>> getAllTickets() {
         return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
     }
+    @GetMapping("/tickets/{ticketId}")
+    public ResponseEntity<Ticket> getTicketById(@PathVariable Long ticketId) {
+        return new ResponseEntity<>(ticketService.getTicketById(ticketId), HttpStatus.OK);
+    }
 
     // Manager approve/deny
-    @PatchMapping("/tickets/{ticketId}")
+    @PatchMapping("/accounts/{accountId}/tickets/{ticketId}")
     public ResponseEntity<Ticket> decide(@PathVariable Long ticketId,
-                                         @RequestParam TicketStatus status) throws TicketNotFoundException {
-        Ticket updated = ticketService.decideTicket(ticketId, status);
+                                         @PathVariable Long accountId,
+                                         @RequestBody Ticket ticket) throws AccountNotFoundException, TicketNotFoundException {
+        Ticket updated = ticketService.decideTicket(ticketId, accountId, ticket);
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 }
