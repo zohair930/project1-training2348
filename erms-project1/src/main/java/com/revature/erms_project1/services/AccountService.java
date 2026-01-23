@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Service
 public class AccountService {
@@ -25,7 +26,11 @@ public class AccountService {
                 .orElseThrow(AccountNotFoundException::new);
     }
 
-    public Account createAccountForUser(Long userId) throws UserNotFoundException {
+    public List<Account> getAllAccounts(){
+        return accountRepository.findAll();
+    }
+
+    public Account createAccountForUser(int userId) throws UserNotFoundException {
         User user = userRepository.findById(userId)
                 .orElseThrow(UserNotFoundException::new);
 

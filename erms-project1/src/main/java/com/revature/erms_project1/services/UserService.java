@@ -15,7 +15,6 @@ public class UserService {
 
     public User register(User person) {
         person = userRepository.save(person);
-        System.out.println("Called register");
         return person;
     }
 
@@ -24,11 +23,6 @@ public class UserService {
         if(personDB.getPassword().equals(password)) return personDB;
         else throw new PasswordFailedException();
     }
-
-//    public User getUserById(Long accountId) throws UserNotFoundException {
-//        return userRepository.findById(accountId)
-//                .orElseThrow(UserNotFoundException::new);
-//    }
 
     public User getUserById(Integer userId) throws UserNotFoundException {
         return userRepository.findById(userId)

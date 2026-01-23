@@ -2,7 +2,6 @@ package com.revature.erms_project1.controllers;
 
 import com.revature.erms_project1.dto.TicketCreateDTO;
 import com.revature.erms_project1.entities.Ticket;
-import com.revature.erms_project1.entities.TicketStatus;
 import com.revature.erms_project1.exceptions.AccountNotFoundException;
 import com.revature.erms_project1.exceptions.TicketNotFoundException;
 import com.revature.erms_project1.services.TicketService;
@@ -49,11 +48,21 @@ public class TicketController {
         return new ResponseEntity<>(ticketService.getAllPendingTickets(), HttpStatus.OK);
     }
 
+    @GetMapping("/tickets")
+    public ResponseEntity<List<Ticket>> getAllTickets() {
+        return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
+    }
+    @GetMapping("/tickets/{ticketId}")
+    public ResponseEntity<Ticket> getTicketById(@PathVariable Long ticketId) {
+        return new ResponseEntity<>(ticketService.getTicketById(ticketId), HttpStatus.OK);
+    }
+
     // Manager approve/deny
-    @PatchMapping("/tickets/{ticketId}")
+    @PatchMapping("/accounts/{accountId}/tickets/{ticketId}")
     public ResponseEntity<Ticket> decide(@PathVariable Long ticketId,
-                                         @RequestParam TicketStatus status) throws TicketNotFoundException {
-        Ticket updated = ticketService.decideTicket(ticketId, status);
+                                         @PathVariable Long accountId,
+                                         @RequestBody Ticket ticket) throws AccountNotFoundException, TicketNotFoundException {
+        Ticket updated = ticketService.decideTicket(ticketId, accountId, ticket);
         return new ResponseEntity<>(updated, HttpStatus.OK);
     }
 }
