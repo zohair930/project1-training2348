@@ -42,6 +42,10 @@ public class TicketService {
         return ticketRepository.findByAccount_Id(accountId);
     }
 
+    public List<Ticket> getAllTickets() {
+        return ticketRepository.findAll();
+    }
+
     // Employee views pending tickets for their account
     public List<Ticket> getPendingTicketsForAccount(Long accountId) {
         return ticketRepository.findByAccount_IdAndStatus(accountId, TicketStatus.PENDING);

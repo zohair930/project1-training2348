@@ -26,7 +26,6 @@ public class Ticket {
     // many tickets can belong to one account
     @ManyToOne
     @JoinColumn(name = "account_fk")
-    @JsonBackReference
     private Account account;
 
     public Ticket() {

@@ -1,4 +1,5 @@
 package com.revature.erms_project1.entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class Account {
 
     //an account can have many tickets
     @OneToMany(targetEntity=Ticket.class, cascade=CascadeType.ALL)
+    @JsonBackReference
     private List<Ticket> tickets = new ArrayList<>();
 
     public Account(BigDecimal balance) {

@@ -24,7 +24,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) throws UserNotFoundException {
         user = this.userService.register(user);
-        accountService.createAccountForUser((long) user.getUserId());
+        accountService.createAccountForUser(user.getUserId());
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 

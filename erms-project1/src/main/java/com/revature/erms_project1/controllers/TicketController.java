@@ -25,7 +25,9 @@ public class TicketController {
     @PostMapping("/accounts/{accountId}/tickets")
     public ResponseEntity<Ticket> submitTicket(@PathVariable Long accountId,
                                                @RequestBody TicketCreateDTO dto) throws AccountNotFoundException {
+
         Ticket created = ticketService.submitTicket(accountId, dto);
+        System.out.println("Created" + created);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
@@ -47,6 +49,11 @@ public class TicketController {
     @GetMapping("/tickets/pending")
     public ResponseEntity<List<Ticket>> getAllPending() {
         return new ResponseEntity<>(ticketService.getAllPendingTickets(), HttpStatus.OK);
+    }
+
+    @GetMapping("/tickets")
+    public ResponseEntity<List<Ticket>> getAllTickets() {
+        return new ResponseEntity<>(ticketService.getAllTickets(), HttpStatus.OK);
     }
 
     // Manager approve/deny
